@@ -7,7 +7,7 @@
     <ProjectGuid>{9E4B0C70-CF15-4AA1-BC11-38C90101F2C1}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>elp.yaTrans</RootNamespace>
+    <RootNamespace>elp.Yandex.Translate</RootNamespace>
     <AssemblyName>elp.Yandex.Translate</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
