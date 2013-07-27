@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Express 2012 for Windows Desktop
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "elp.yaTrans", "elp.yaTrans\elp.yaTrans.csproj", "{9E4B0C70-CF15-4AA1-BC11-38C90101F2C1}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "elp.Yandex.Translate", "elp.Yandex.Translate\elp.Yandex.Translate.csproj", "{9E4B0C70-CF15-4AA1-BC11-38C90101F2C1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

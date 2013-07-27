@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace elp.yaTrans
+namespace elp.Yandex.Translate
 {
     /// <summary>
     /// Предоставляет функционал для описания языка
@@ -14,7 +14,7 @@ namespace elp.yaTrans
         private List<Language> _translateList;
 
         /// <summary>
-        /// Создает новый экземпляр класса <see cref="elp.yaTrans.Language"/>
+        /// Создает новый экземпляр класса <see cref="elp.Yandex.Translate.Language"/>
         /// </summary>
         private Language()
         {
@@ -22,7 +22,7 @@ namespace elp.yaTrans
         }
 
         /// <summary>
-        /// Создает новый экземпляр класса <see cref="elp.yaTrans.Language"/>
+        /// Создает новый экземпляр класса <see cref="elp.Yandex.Translate.Language"/>
         /// </summary>
         /// <param name="key">Двухсимвольный языковой код</param>
         /// <param name="value">Название языка</param>

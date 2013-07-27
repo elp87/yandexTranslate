@@ -8,7 +8,10 @@ using System.Threading.Tasks;
 using System.Xml.Linq;
 using System.Windows;
 
-namespace elp.yaTrans
+///<summary>
+/// Пространство имен содержит классы для работы с сервисом Yandex Переводчик
+/// </summary
+namespace elp.Yandex.Translate
 {
     /// <summary>
     /// Предоставляет функционал для работы с сервисом Yandex Переводчик
@@ -39,7 +42,7 @@ namespace elp.yaTrans
         }
 
         /// <summary>
-        /// Создает новый экземпляр класса <see cref="elp.yaTrans.Translator"/>
+        /// Создает новый экземпляр класса <see cref="elp.Yandex.Translate.Translator"/>
         /// </summary>
         /// <param name="apiKey">API-ключ</param>
         public Translator(string apiKey)
@@ -47,20 +50,14 @@ namespace elp.yaTrans
         {
             _keyValue = apiKey;
         }
-        #endregion
-
-        
+        #endregion        
 
         #region Methods
         #region public
         /// <summary>
         /// Возвращает список строк, содержащих пары направления перевода в формате "ru-en", "de-fr" и т.д
         /// </summary>
-        /// <returns>список строк, содержащих пары направления перевода</returns>
-        /// <code>
-        /// Translator session = new Translator(apiKey);
-        /// Liststring langList = session.GetLangs();
-        /// </code>
+        /// <returns>список строк, содержащих пары направления перевода</returns>        
         public List<string> GetLangs()
         {
             List<string> langsList = new List<string>();
