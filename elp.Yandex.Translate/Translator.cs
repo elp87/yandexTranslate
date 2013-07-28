@@ -8,13 +8,11 @@ using System.Threading.Tasks;
 using System.Xml.Linq;
 using System.Windows;
 
-///<summary>
-/// Пространство имен содержит классы для работы с сервисом Yandex Переводчик
-/// </summary
+
 namespace elp.Yandex.Translate
 {
     /// <summary>
-    /// Предоставляет функционал для работы с сервисом Yandex Переводчик
+    /// Предоставляет функционал для работы с сервисом Yandex Переводчик.
     /// </summary>
     public class Translator
     {
@@ -42,9 +40,9 @@ namespace elp.Yandex.Translate
         }
 
         /// <summary>
-        /// Создает новый экземпляр класса <see cref="elp.Yandex.Translate.Translator"/>
+        /// Создает новый экземпляр класса <see cref="elp.Yandex.Translate.Translator"/>.
         /// </summary>
-        /// <param name="apiKey">API-ключ</param>
+        /// <param name="apiKey">API-ключ.</param>
         public Translator(string apiKey)
             : this()
         {
@@ -55,9 +53,9 @@ namespace elp.Yandex.Translate
         #region Methods
         #region public
         /// <summary>
-        /// Возвращает список строк, содержащих пары направления перевода в формате "ru-en", "de-fr" и т.д
+        /// Возвращает список строк, содержащих пары направления перевода в формате "ru-en", "de-fr" и т.д.
         /// </summary>
-        /// <returns>список строк, содержащих пары направления перевода</returns>        
+        /// <returns>Список строк, содержащих пары направления перевода.</returns>        
         public List<string> GetLangs()
         {
             List<string> langsList = new List<string>();
@@ -77,9 +75,9 @@ namespace elp.Yandex.Translate
         }
 
         /// <summary>
-        /// Возвращает список языков, поддерживаемых сервисом
+        /// Возвращает список языков, поддерживаемых сервисом.
         /// </summary>
-        /// <returns>список языков</returns>
+        /// <returns>Список языков.</returns>
         public List<Language> GetLangeuageList()
         {
             string request = _adress + _getLangs + _key + _keyValue + _ui + _ru;
@@ -109,10 +107,10 @@ namespace elp.Yandex.Translate
         }
 
         /// <summary>
-        /// Определяет язык, на котором написан заданный текст
+        /// Определяет язык, на котором написан заданный текст.
         /// </summary>
-        /// <param name="text">Текст, для которого требуется определить язык</param>
-        /// <returns>язык, на котором написан заданный текст</returns>
+        /// <param name="text">Текст, для которого требуется определить язык.</param>
+        /// <returns>Язык, на котором написан заданный текст.</returns>
         public Language Detect(string text)
         {
             string[] reqText = Translator.MakeRequestText(text);
@@ -129,18 +127,17 @@ namespace elp.Yandex.Translate
         }
 
         /// <summary>
-        /// Осуществляет перевод текста
+        /// Осуществляет перевод текста.
         /// </summary>
-        /// <param name="firstLanguage">Язык, на котором написан текст</param>
-        /// <param name="secLanguage">Язык, на который переводится текст</param>
-        /// <param name="text">Текст, который требуется перевести</param>
-        /// <returns>перевод текста</returns>
+        /// <param name="firstLanguage">Язык, на котором написан текст.</param>
+        /// <param name="secLanguage">Язык, на который переводится текст.</param>
+        /// <param name="text">Текст, который требуется перевести.</param>
+        /// <returns>Перевод текста.</returns>
         public List<string> Translate(Language firstLanguage, Language secLanguage, string text)
         {
-            List<string> translList = new List<string>();
+            List<string> translList;
             string pair = "";
-            string[] reqText = Translator.MakeRequestText(text);
-
+            
             if (secLanguage == null)
             {
                 pair = firstLanguage.key;
@@ -151,8 +148,21 @@ namespace elp.Yandex.Translate
             {
                 pair = firstLanguage.key + "-" + secLanguage.key;
             }
-            
-            string request = _adress + _translate + _key + _keyValue + _lang + pair;
+            translList = this.Translate(pair, text);
+            return translList;
+        }
+
+        /// <summary>
+        /// Осуществляет перевод текста.
+        /// </summary>
+        /// <param name="lang">Направление перевода. Либо в формате "en" (перевод на английский с автоматическим определением языка оригинального текста), либо в формате "ru-en"(перевод с русского на английский).</param>
+        /// <param name="text">Перевод текста.</param>
+        /// <returns></returns>
+        public List<string> Translate(string lang, string text)
+        {
+            List<string> translateList = new List<string>();
+            string[] reqText = Translator.MakeRequestText(text);
+            string request = _adress + _translate + _key + _keyValue + _lang + lang;
             for (int i = 0; i < reqText.Length; i++)
             {
                 request += _text + reqText[i];
@@ -164,9 +174,9 @@ namespace elp.Yandex.Translate
                             select paragraph;
             foreach (XElement paragraph in transLINQ)
             {
-                translList.Add(paragraph.Value);
+                translateList.Add(paragraph.Value);
             }
-            return translList;
+            return translateList;
         }
         #endregion
 
@@ -203,14 +213,8 @@ namespace elp.Yandex.Translate
             WebResponse resp = req.GetResponse();
             Stream stream = resp.GetResponseStream();
             XDocument requestAnwer = XDocument.Load(stream);
-            return requestAnwer;
-            
-        }
-
-        private static int GetCode(XDocument AnswerXML)
-        {
-            return 200;
-        }
+            return requestAnwer;            
+        }        
         #endregion
         #endregion
     }

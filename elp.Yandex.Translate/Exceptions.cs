@@ -7,17 +7,17 @@ namespace elp.Yandex.Translate
 {
     
     /// <summary>
-    /// Исключение, возникающее при попытке перевода неподдерживаемого направления
+    /// Исключение, возникающее при попытке перевода неподдерживаемого направления.
     /// </summary>
     public class NotSupportedLangException : Exception
     {
         /// <summary>
-        /// Дата возникновения исключения
+        /// Дата возникновения исключения.
         /// </summary>
         public DateTime ErrorTimeStamp { get; set; }
 
         /// <summary>
-        /// Причина возникновения исключения
+        /// Причина возникновения исключения.
         /// </summary>
         public string CauseOfError
         {
@@ -30,11 +30,11 @@ namespace elp.Yandex.Translate
         private NotSupportedLangException() { }
 
         /// <summary>
-        /// Выполняет инициализацию нового экземпляра класса <see cref="NotSupportedLangException"/> со строкой сообщения, причиной и датой возникновения исключения
+        /// Выполняет инициализацию нового экземпляра класса <see cref="NotSupportedLangException"/> со строкой сообщения, причиной и датой возникновения исключения.
         /// </summary>
-        /// <param name="message"></param>
-        /// <param name="code"></param>
-        /// <param name="time"></param>
+        /// <param name="message">Строка сообщения.</param>
+        /// <param name="code">Код ошибки.</param>
+        /// <param name="time">Дата возникновения исключения.</param>
         public NotSupportedLangException(string message, int code, DateTime time)
             : base(message)
         {
