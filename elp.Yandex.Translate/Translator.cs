@@ -200,8 +200,16 @@ namespace elp.Yandex.Translate
             while (text.IndexOf("\r\n") != -1)
             {
                 int index = text.IndexOf("\r\n");
-                paragraphList.Add(text.Substring(0, index));
-                text = text.Substring(index + 4);
+                string txt = text.Substring(0, index);
+                if (txt != "")
+                {
+                    paragraphList.Add(txt);
+                }
+                try
+                {
+                    text = text.Substring(index + 4);
+                }
+                catch (ArgumentOutOfRangeException) { text = ""; }
             }
             paragraphList.Add(text);
             return paragraphList.ToArray();
